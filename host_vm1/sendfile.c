@@ -19,7 +19,9 @@ int sendfile(int sock)
     int file_pointer_size;
 
     system("sudo docker commit nx nx2");
+    system("rm nx2.tar");
     system("sudo docker save -o nx2.tar nx2");
+    //sleep(5);
     system("sudo chmod 777 nx2.tar");
 
     if ((file = fopen("nx2.tar", "rb")) == NULL)

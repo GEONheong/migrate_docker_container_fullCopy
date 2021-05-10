@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define SERVERIP "127.0.0.1"
 
@@ -17,6 +18,8 @@ int main(int argc, char *argv[])
     char sendMsg[256];
     //char *sendMsg = "migrate crazy_orange 1 2";
     char recvMsg[100];
+    time_t start_time, end_time;
+    double diff_time;
 
     con_len = sizeof(con_addr);
 
@@ -42,12 +45,16 @@ int main(int argc, char *argv[])
 
     printf("Input Command : ");
     gets(sendMsg);
+    time(&start_time);
     send(sock, sendMsg, strlen(sendMsg) + 1, 0);
     printf("sendMsg : %s\n", sendMsg);
     recv(sock, recvMsg, sizeof(recvMsg), 0);
     printf("recvMsg : %s\n", recvMsg);
 
     close(sock);
+    time(&end_time);
+    diff_time = difftime(start_time, end_time);
+    printf("It took %.5lf\n", diff_time);
 
     return 0;
 }
