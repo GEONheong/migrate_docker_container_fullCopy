@@ -50,11 +50,11 @@ int main(int argc, char *argv[])
     printf("sendMsg : %s\n", sendMsg);
     recv(sock, recvMsg, sizeof(recvMsg), 0);
     printf("recvMsg : %s\n", recvMsg);
-
-    close(sock);
     time(&end_time);
     diff_time = difftime(start_time, end_time);
     printf("It took %.5lf\n", diff_time);
+
+    close(sock);
 
     return 0;
 }
