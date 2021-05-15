@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     recv(sock, recvMsg, sizeof(recvMsg), 0);
     printf("recvMsg : %s\n", recvMsg);
     time(&end_time);
-    diff_time = difftime(start_time, end_time);
+    diff_time = difftime(end_time, start_time);
     printf("It took %.5lf\n", diff_time);
 
     close(sock);
